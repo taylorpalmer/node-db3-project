@@ -1,7 +1,7 @@
 const db = require("../data/config");
 
 function find() {
-  return db("schemes as s");
+  return db.select("*").from("schemes");
 }
 function findById(id) {
   return db("schemes as s").where("s.id", id).first();
@@ -14,15 +14,15 @@ function findSteps(id) {
 }
 
 function add(scheme) {
-  return db("schemes as s").insert(scheme);
+  return db("schemes").insert(scheme);
 }
 
 function update(schemes, id) {
-  return db("schemes as s").where({ id }).update(schemes);
+  return db("schemes").where({ id }).update(schemes);
 }
 
 function remove(id) {
-  return db("schemes as s").where({ id }).del();
+  return db("schemes").where({ id }).del();
 }
 
 module.exports = {
